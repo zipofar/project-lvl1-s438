@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 
-import {greeting} from '..';
+import Greeting from '..';
 
 console.log('Welcome to the Brain Games!\n');
-const user_name = greeting();
-console.log(`Hello, ${user_name}!`);
-
+const userName = Greeting();
+console.log(`Hello, ${userName}!`);
