@@ -1,6 +1,6 @@
 {
   "name": "brain-games-zipofar",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Hexlet project 1",
   "bin": {
     "brain-games": "dist/bin/brain-games.js"
@@ -27,5 +27,8 @@
     "@babel/core": "^7.2.2",
     "@babel/node": "^7.2.2",
     "@babel/preset-env": "^7.3.1"
+  },
+  "dependencies": {
+    "readline-sync": "^1.4.9"
   }
 }
