@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import Greeting from '..';
+import { greeting } from '..';
 
-Greeting();
+greeting();

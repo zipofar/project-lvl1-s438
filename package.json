@@ -1,6 +1,6 @@
 {
   "name": "brain-games-zipofar",
-  "version": "0.0.3",
+  "version": "0.1.1",
   "description": "Hexlet project 1",
   "keywords": [
     "js",
@@ -8,7 +8,8 @@
     "project"
   ],
   "bin": {
-    "brain-games": "dist/bin/brain-games.js"
+    "brain-games": "dist/bin/brain-games.js",
+    "brain-even": "dist/bin/brain-even.js"
   },
   "files": [
     "dist"
