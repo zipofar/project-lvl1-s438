@@ -4,16 +4,31 @@
 
 # Brain games
 
-## How to install games
+### How to install games
 
 ```
 $ sudo npm install -g brain-games-zipofar
 ```
+[![asciicast](https://asciinema.org/a/ankRMWacQz0OmPy5wnpXzj6E4.svg)](https://asciinema.org/a/ankRMWacQz0OmPy5wnpXzj6E4)
 
-[![asciicast](https://asciinema.org/a/ImdoW8HHUwsI2jw0K9X4W39BV.svg)](https://asciinema.org/a/ImdoW8HHUwsI2jw0K9X4W39BV)
+### Games
 
-## Start game
 Define number is even or not
 ```
 $ brain-even
 ```
+[![asciicast](https://asciinema.org/a/LjkkpaP8K2guqEnzeGjdbgtye.svg)](https://asciinema.org/a/LjkkpaP8K2guqEnzeGjdbgtye)
+
+
+Calculate result of the expression
+```
+$ brain-calc
+```
+[![asciicast](https://asciinema.org/a/7nUh65mxFNOd1I4tPyfYlYUNe.svg)](https://asciinema.org/a/7nUh65mxFNOd1I4tPyfYlYUNe)
+
+
+Find the greatest common divisor of given numbers
+```
+$ brain-gcd
+```
+[![asciicast](https://asciinema.org/a/x3C2NFCjHLjTJepBgaU1SzYzJ.svg)](https://asciinema.org/a/x3C2NFCjHLjTJepBgaU1SzYzJ)
