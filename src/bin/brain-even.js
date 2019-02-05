@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
-import { startGameEven } from '..';
+import startGame from '..';
+import buildGame from '../games/game-even';
 
-startGameEven(3, 1, 10);
+const game = buildGame();
+startGame(game);
