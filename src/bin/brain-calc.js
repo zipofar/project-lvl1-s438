@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-import startGame from '..';
-import game from '../games/game-calc';
+import launchGame from '../games/game-calc';
 
-startGame(game);
+launchGame();

@@ -5,8 +5,6 @@ const showTryAgain = (userAnswer, rightAnswer, userName) => {
   console.log(`Let's try again, ${userName}!`);
 };
 
-const getRandom = (min, max) => Math.floor(Math.random() * (max - min) + min);
-
 export function greeting(description = '') {
   console.log('Welcome to the Brain Games!');
   if (description !== '') console.log(description);
@@ -21,8 +19,8 @@ export default function startGame(game) {
   const description = game('getDescription');
   const userName = greeting(description);
   for (let i = 0; i < countGames; i += 1) {
-    const question = game('getQuestion', getRandom);
-    const rightAnswer = game('getAnswer', question);
+    const question = game('getQuestion');
+    const rightAnswer = game('getAnswer');
     const userAnswer = readlineSync.question(`Question: ${question}\nYour answer: `);
 
     if (rightAnswer === userAnswer) {

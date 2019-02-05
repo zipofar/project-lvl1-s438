@@ -1,20 +1,34 @@
+import startGame from '..';
+
+const getRandom = (min, max) => Math.floor(Math.random() * (max - min) + min);
+
 const isEven = num => num % 2 === 0;
 
-const getDescription = () => 'Answer "yes" if number even otherwise answer "no".';
+const description = 'Answer "yes" if number even otherwise answer "no".';
 
-const getQuestion = getRandom => getRandom(1, 20);
+let answer = null;
 
-const getAnswer = question => (isEven(question) ? 'yes' : 'no');
+const generateAnswer = (question) => {
+  answer = isEven(question) ? 'yes' : 'no';
+};
 
-export default (fn, arg) => {
+const getQuestion = () => {
+  const question = getRandom(1, 20);
+  generateAnswer(question);
+  return question;
+};
+
+const game = (fn) => {
   switch (fn) {
     case 'getDescription':
-      return getDescription();
+      return description;
     case 'getQuestion':
-      return getQuestion(arg);
+      return getQuestion();
     case 'getAnswer':
-      return getAnswer(arg);
+      return answer;
     default:
       return null;
   }
 };
+
+export default () => startGame(game);

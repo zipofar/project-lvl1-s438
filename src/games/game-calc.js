@@ -1,38 +1,47 @@
-const calculate = (expression) => {
-  const [firstNum, operator, secondNum] = expression.split(' ');
+import startGame from '..';
+
+const getRandom = (min, max) => Math.floor(Math.random() * (max - min) + min);
+
+const description = 'What is the result of the expression?';
+
+let answer = null;
+
+const generateAnswer = (n1, n2, operator) => {
   switch (operator) {
     case '+':
-      return String(Number(firstNum) + Number(secondNum));
+      answer = String(n1 + n2);
+      break;
     case '-':
-      return String(Number(firstNum) - Number(secondNum));
+      answer = String(n1 - n2);
+      break;
     case '*':
-      return String(Number(firstNum) * Number(secondNum));
+      answer = String(n1 * n2);
+      break;
     default:
-      return null;
+      answer = null;
   }
 };
 
-const getDescription = () => 'What is the result of the expression?';
-
-const getQuestion = (getRandom) => {
+const getQuestion = () => {
   const firstNum = getRandom(1, 10);
   const secondNum = getRandom(1, 10);
   const operations = ['+', '-', '*'];
   const operator = operations[getRandom(0, operations.length - 1)];
+  generateAnswer(Number(firstNum), Number(secondNum), operator);
   return `${firstNum} ${operator} ${secondNum}`;
 };
 
-const getAnswer = question => calculate(question);
-
-export default (fn, arg) => {
+const game = (fn) => {
   switch (fn) {
     case 'getDescription':
-      return getDescription();
+      return description;
     case 'getQuestion':
-      return getQuestion(arg);
+      return getQuestion();
     case 'getAnswer':
-      return getAnswer(arg);
+      return answer;
     default:
       return null;
   }
 };
+
+export default () => startGame(game);
