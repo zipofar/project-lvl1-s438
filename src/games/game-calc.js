@@ -1,47 +1,45 @@
 import startGame from '..';
-
-const getRandom = (min, max) => Math.floor(Math.random() * (max - min) + min);
+import { getRandom } from '../utils';
 
 const description = 'What is the result of the expression?';
 
-let answer = null;
+const parse = (exp) => {
+  const [n1, operator, n2] = exp.split(' ');
+  return [Number(n1), Number(n2), operator];
+};
 
-const generateAnswer = (n1, n2, operator) => {
+const calcExpression = (n1, n2, operator) => {
   switch (operator) {
-    case '+':
-      answer = String(n1 + n2);
-      break;
     case '-':
-      answer = String(n1 - n2);
-      break;
+      return n1 - n2;
     case '*':
-      answer = String(n1 * n2);
-      break;
+      return n1 * n2;
     default:
-      answer = null;
+      return n1 + n2;
   }
 };
 
-const getQuestion = () => {
+const getQuestion = (operations) => {
   const firstNum = getRandom(1, 10);
   const secondNum = getRandom(1, 10);
-  const operations = ['+', '-', '*'];
   const operator = operations[getRandom(0, operations.length - 1)];
-  generateAnswer(Number(firstNum), Number(secondNum), operator);
   return `${firstNum} ${operator} ${secondNum}`;
 };
 
-const game = (fn) => {
-  switch (fn) {
-    case 'getDescription':
-      return description;
-    case 'getQuestion':
-      return getQuestion();
-    case 'getAnswer':
-      return answer;
-    default:
-      return null;
-  }
+const operations = ['+', '-', '*'];
+
+const generateDataGame = () => {
+  const question = getQuestion(operations);
+  const answer = calcExpression(...parse(question));
+
+  return (message) => {
+    switch (message) {
+      case 'answer':
+        return answer;
+      default:
+        return question;
+    }
+  };
 };
 
-export default () => startGame(game);
+export default () => startGame(description, generateDataGame);

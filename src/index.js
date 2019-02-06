@@ -14,16 +14,16 @@ export function greeting(description = '') {
   return userName;
 }
 
-export default function startGame(game) {
+export default function startGame(description, generateDataGame) {
   const countGames = 3;
-  const description = game('getDescription');
   const userName = greeting(description);
   for (let i = 0; i < countGames; i += 1) {
-    const question = game('getQuestion');
-    const rightAnswer = game('getAnswer');
+    const getDataGame = generateDataGame();
+    const question = getDataGame();
+    const rightAnswer = getDataGame('answer');
     const userAnswer = readlineSync.question(`Question: ${question}\nYour answer: `);
 
-    if (rightAnswer === userAnswer) {
+    if (String(rightAnswer) === userAnswer) {
       console.log('Correct!');
     } else {
       showTryAgain(userAnswer, rightAnswer, userName);

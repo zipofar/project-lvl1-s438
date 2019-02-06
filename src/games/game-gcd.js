@@ -1,40 +1,40 @@
 import startGame from '..';
-
-const getRandom = (min, max) => Math.floor(Math.random() * (max - min) + min);
+import { getRandom } from '../utils';
 
 const description = 'Find the greatest common divisor of given numbers.';
 
-let answer = null;
+const parse = exp => exp.split(' ').map(i => Number(i));
 
-const generateAnswer = (n1, n2) => {
-  const [maxNum, minNum] = n1 > n2 ? [n1, n2] : [n2, n1].reverse();
+const findGcd = (n1, n2) => {
+  const maxNum = Math.max(n1, n2);
+  const minNum = Math.min(n1, n2);
+
   for (let divisor = minNum; divisor > 0; divisor -= 1) {
     if (minNum % divisor === 0 && maxNum % divisor === 0) {
-      answer = String(divisor);
-      break;
+      return divisor;
     }
   }
-  return null;
+  return 1;
 };
 
 const getQuestion = () => {
   const n1 = getRandom(1, 100);
   const n2 = getRandom(1, 100);
-  generateAnswer(n1, n2);
   return `${n1} ${n2}`;
 };
 
-const game = (fn) => {
-  switch (fn) {
-    case 'getDescription':
-      return description;
-    case 'getQuestion':
-      return getQuestion();
-    case 'getAnswer':
-      return answer;
-    default:
-      return null;
-  }
+const generateDataGame = () => {
+  const question = getQuestion();
+  const answer = findGcd(...parse(question));
+
+  return (message) => {
+    switch (message) {
+      case 'answer':
+        return answer;
+      default:
+        return question;
+    }
+  };
 };
 
-export default () => startGame(game);
+export default () => startGame(description, generateDataGame);
