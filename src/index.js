@@ -5,20 +5,15 @@ const showTryAgain = (userAnswer, rightAnswer, userName) => {
   console.log(`Let's try again, ${userName}!`);
 };
 
-export function greeting(description = '') {
-  console.log('Welcome to the Brain Games!');
-  if (description !== '') console.log(description);
-  console.log('');
+const countGames = 3;
+
+export default (description, generateGameData) => {
+  console.log('Welcome to the Brain Games!\n');
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}!`);
-  return userName;
-}
 
-export default function startGame(description, generateDataGame) {
-  const countGames = 3;
-  const userName = greeting(description);
   for (let i = 0; i < countGames; i += 1) {
-    const getDataGame = generateDataGame();
+    const getDataGame = generateGameData();
     const question = getDataGame();
     const rightAnswer = getDataGame('answer');
     const userAnswer = readlineSync.question(`Question: ${question}\nYour answer: `);
@@ -31,4 +26,4 @@ export default function startGame(description, generateDataGame) {
     }
   }
   console.log(`Congratulations, ${userName}!`);
-}
+};

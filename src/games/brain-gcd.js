@@ -1,9 +1,8 @@
 import startGame from '..';
-import { getRandom } from '../utils';
+import getRandom from '../utils';
 
 const description = 'Find the greatest common divisor of given numbers.';
 
-const parse = exp => exp.split(' ').map(i => Number(i));
 
 const findGcd = (n1, n2) => {
   const maxNum = Math.max(n1, n2);
@@ -17,15 +16,11 @@ const findGcd = (n1, n2) => {
   return 1;
 };
 
-const getQuestion = () => {
-  const n1 = getRandom(1, 100);
-  const n2 = getRandom(1, 100);
-  return `${n1} ${n2}`;
-};
-
-const generateDataGame = () => {
-  const question = getQuestion();
-  const answer = findGcd(...parse(question));
+const generateGameData = () => {
+  const number1 = getRandom(1, 100);
+  const number2 = getRandom(1, 100);
+  const question = `${number1} ${number2}`;
+  const answer = findGcd(number1, number2);
 
   return (message) => {
     switch (message) {
@@ -37,4 +32,4 @@ const generateDataGame = () => {
   };
 };
 
-export default () => startGame(description, generateDataGame);
+export default () => startGame(description, generateGameData);
