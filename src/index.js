@@ -14,11 +14,11 @@ export default (description, generateGameData) => {
 
   for (let i = 0; i < countGames; i += 1) {
     const getDataGame = generateGameData();
-    const question = getDataGame();
+    const question = getDataGame('question');
     const rightAnswer = getDataGame('answer');
     const userAnswer = readlineSync.question(`Question: ${question}\nYour answer: `);
 
-    if (String(rightAnswer) === userAnswer) {
+    if (rightAnswer === userAnswer) {
       console.log('Correct!');
     } else {
       showTryAgain(userAnswer, rightAnswer, userName);

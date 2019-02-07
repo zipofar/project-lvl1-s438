@@ -2,8 +2,13 @@ import startGame from '..';
 import getRandom from '../utils';
 
 const isPrime = (num) => {
-  for (let i = 2; i < num - 1; i += 1) {
-    if (num % i === 0) {
+  const n = Math.abs(num);
+  const sqrt = Math.sqrt(n);
+
+  if (num < 2) return false;
+
+  for (let i = 2; i <= sqrt; i += 1) {
+    if (n % i === 0) {
       return false;
     }
   }
@@ -20,8 +25,10 @@ const generateGameData = () => {
     switch (message) {
       case 'answer':
         return answer;
-      default:
+      case 'question':
         return question;
+      default:
+        return null;
     }
   };
 };

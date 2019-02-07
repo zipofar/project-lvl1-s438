@@ -3,21 +3,20 @@ import getRandom from '../utils';
 
 const description = 'What number is missing in the progression?';
 
-const generateProgression = (count) => {
-  const period = getRandom(1, 10);
-  let number = getRandom(1, 10);
+const generateProgression = (count, period, startNumber) => {
   const progression = [];
-
   for (let i = 0; i < count; i += 1) {
-    progression[i] = number;
-    number += period;
+    progression[i] = startNumber + period * i;
   }
   return progression;
 };
 
+const countNumbers = 10;
+
 const generateGameData = () => {
-  const countNumbers = 10;
-  const progression = generateProgression(countNumbers);
+  const period = getRandom(1, 10);
+  const startNumber = getRandom(1, 10);
+  const progression = generateProgression(countNumbers, period, startNumber);
   const missedIndex = getRandom(0, countNumbers - 1);
   const question = progression.map((e, i) => (i === missedIndex ? '...' : e)).join(' ');
   const answer = progression[missedIndex];
@@ -25,9 +24,11 @@ const generateGameData = () => {
   return (message) => {
     switch (message) {
       case 'answer':
-        return answer;
-      default:
+        return String(answer);
+      case 'question':
         return question;
+      default:
+        return null;
     }
   };
 };

@@ -25,9 +25,11 @@ const generateGameData = () => {
   return (message) => {
     switch (message) {
       case 'answer':
-        return answer;
-      default:
+        return String(answer);
+      case 'question':
         return question;
+      default:
+        return null;
     }
   };
 };

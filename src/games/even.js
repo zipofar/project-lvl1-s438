@@ -13,8 +13,10 @@ const generateGameData = () => {
     switch (message) {
       case 'answer':
         return answer;
-      default:
+      case 'question':
         return question;
+      default:
+        return null;
     }
   };
 };
