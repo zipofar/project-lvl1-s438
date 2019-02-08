@@ -2,10 +2,9 @@ import startGame from '..';
 import getRandom from '../utils';
 
 const isPrime = (num) => {
+  if (num < 2) return false;
   const n = Math.abs(num);
   const sqrt = Math.sqrt(n);
-
-  if (num < 2) return false;
 
   for (let i = 2; i <= sqrt; i += 1) {
     if (n % i === 0) {

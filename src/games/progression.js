@@ -17,9 +17,9 @@ const generateGameData = () => {
   const period = getRandom(1, 10);
   const startNumber = getRandom(1, 10);
   const progression = generateProgression(countNumbers, period, startNumber);
-  const missedIndex = getRandom(0, countNumbers - 1);
-  const question = progression.map((e, i) => (i === missedIndex ? '...' : e)).join(' ');
-  const answer = progression[missedIndex];
+  const hiddenIndex = getRandom(0, countNumbers - 1);
+  const question = progression.map((e, i) => (i === hiddenIndex ? '...' : e)).join(' ');
+  const answer = progression[hiddenIndex];
 
   return (message) => {
     switch (message) {
